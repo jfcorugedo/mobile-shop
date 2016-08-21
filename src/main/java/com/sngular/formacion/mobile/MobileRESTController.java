@@ -3,6 +3,8 @@ package com.sngular.formacion.mobile;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,9 +20,9 @@ public class MobileRESTController {
 
 	@ResponseBody
 	@RequestMapping(method=RequestMethod.POST)
-	public Mobile create(@RequestBody Mobile mobile) {
+	public ResponseEntity<Mobile> create(@RequestBody Mobile mobile) {
 		
-		return mobile.setId(1L);
+		return new ResponseEntity<Mobile>(mobile.setId(1L), HttpStatus.CREATED);
 	}
 	
 	@RequestMapping(value="{id}", method=RequestMethod.GET)

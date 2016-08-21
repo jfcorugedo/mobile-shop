@@ -1,6 +1,7 @@
 package com.sngular.formacion.mobile;
 
 import org.junit.Test;
+import org.springframework.util.ReflectionUtils;
 
 import com.sngular.formacion.mobile.dto.Mobile;
 
@@ -19,7 +20,7 @@ public class MobileRESTControllerTest {
 								.setPrice(749.0);
 		
 		//when
-		Mobile result = controller.create(testMobile);
+		Mobile result = controller.create(testMobile).getBody();
 		
 		//then
 		assertThat(result.getId(), notNullValue());
